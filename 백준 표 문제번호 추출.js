@@ -6,6 +6,7 @@
 // @author       You
 // @match        https://www.acmicpc.net/category/detail*
 // @match        https://www.acmicpc.net/workbook/view*
+// @match        https://www.acmicpc.net/problemset*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=acmicpc.net
 // @grant        none
 // ==/UserScript==
@@ -16,7 +17,8 @@
     // 표 전체 담고 있는 div태그 위치
     const tableContainer = window.location.href.includes("/category") ? document.querySelector("body > div.wrapper > div.container.content > div:nth-child(5)")
         : window.location.href.includes("/workbook") ? document.querySelector("body > div.wrapper > div.container.content > div.row > div:nth-child(3)")
-            : null;
+            : window.location.href.includes("/problemset") ? document.querySelector("body > div.wrapper > div.container.content > div:nth-child(6) > div:nth-child(1)")
+                : null;
 
     if (tableContainer) {
         const firstColumnValues = Array.from(tableContainer.querySelectorAll("tbody tr")).map(row => {
